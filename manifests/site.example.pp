@@ -9,8 +9,8 @@ $nova_db_password='123123'
 
 
 $mysql_host='192.168.56.105'
-$glance_host='192.168.56.105'
 $keystone_host='192.168.56.106'
+$glance_host='192.168.56.105'
 $controller_host='192.168.56.106'
 
 
