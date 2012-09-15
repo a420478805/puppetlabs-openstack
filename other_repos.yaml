@@ -2,23 +2,23 @@
 repos:
   repo_paths:
     # openstack git repos
-    git://github.com/puppetlabs/puppetlabs-nova: nova
-    git://github.com/puppetlabs/puppetlabs-glance: glance
-    git://github.com/puppetlabs/puppetlabs-swift: swift
-    git://github.com/puppetlabs/puppetlabs-keystone: keystone
-    git://github.com/puppetlabs/puppetlabs-horizon: horizon
+    git://github.com/a420478805/puppetlabs-nova: nova
+    git://github.com/a420478805/puppetlabs-glance: glance
+    git://github.com/a420478805/puppetlabs-swift: swift
+    git://github.com/a420478805/puppetlabs-keystone: keystone
+    git://github.com/a420478805/puppetlabs-horizon: horizon
     # openstack middleware
-    git://github.com/puppetlabs/puppetlabs-rabbitmq: rabbitmq
-    git://github.com/puppetlabs/puppetlabs-mysql: mysql
-    git://github.com/puppetlabs/puppetlabs-git: git
-    git://github.com/puppetlabs/puppetlabs-vcsrepo: vcsrepo
+    git://github.com/a420478805/puppetlabs-rabbitmq: rabbitmq
+    git://github.com/a420478805/puppetlabs-mysql: mysql
+    git://github.com/a420478805/puppetlabs-git: git
+    git://github.com/a420478805/puppetlabs-vcsrepo: vcsrepo
     git://github.com/saz/puppet-memcached: memcached
-    git://github.com/puppetlabs/puppetlabs-rsync: rsync
+    git://github.com/a420478805/puppetlabs-rsync: rsync
     # other deps
-    git://github.com/puppetlabs/puppetlabs-xinetd: xinetd
+    git://github.com/a420478805/puppetlabs-xinetd: xinetd
     git://github.com/saz/puppet-ssh: ssh
-    git://github.com/puppetlabs/puppetlabs-stdlib: stdlib
-    git://github.com/puppetlabs/puppetlabs-apt: apt
+    git://github.com/a420478805/puppetlabs-stdlib: stdlib
+    git://github.com/a420478805/puppetlabs-apt: apt
     git://github.com/ripienaar/puppet-concat: concat
     git://github.com/duritong/puppet-sysctl.git: sysctl
   checkout_branches:
