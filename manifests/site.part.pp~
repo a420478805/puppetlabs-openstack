@@ -1,5 +1,5 @@
 
-node /mysql/{
+node mysql{
    
   class { 'mysql::server':
     config_hash => {
@@ -36,7 +36,7 @@ node /mysql/{
 }
 
 
-node /keystone/{
+node keystone{
 
   ####### KEYSTONE ###########
   class {'mysql::python':
@@ -86,16 +86,16 @@ node /keystone/{
     # set up nova serice,user,endpoint
     class { 'nova::keystone::auth':
       password         => $nova_user_password,
-      public_address   => $controller_host,
-      internal_address => $controller_host,
-      admin_address    => $controller_host,
+      public_address   => $nova_host,
+      internal_address => $nova_host,
+      admin_address    => $nova_host,
       #before           => Class['nova::api'],
     }
   }
   ######## END KEYSTONE ##########
 }
 
-node /glance/{
+node glance{
   ######## BEGIN GLANCE ##########
   
   class {'mysql::python':
@@ -130,7 +130,7 @@ node /glance/{
   ######## END GLANCE ###########
 }
 
-node /controller/{
+node controller{
   
   $multi_host=true
   $create_networks = true
@@ -286,7 +286,7 @@ node /controller/{
 
 
 
-node /compute/ {
+node /openstack_compute/ {
 
   class { 'openstack::compute':
     public_interface   => $public_interface,
@@ -298,11 +298,11 @@ node /compute/ {
     multi_host         => true,
     sql_connection     => $nova_db,
     nova_user_password => $nova_user_password,
-    rabbit_host        => $controller_host,
+    rabbit_host        => $nova_host,
     rabbit_password    => $rabbit_password,
     rabbit_user        => $rabbit_user,
     glance_api_servers => $glance_api_servers,
-    vncproxy_host      => $controller_host,
+    vncproxy_host      => $nova_host,
     vnc_enabled        => true,
     verbose            => $verbose,
     manage_volumes     => false,
