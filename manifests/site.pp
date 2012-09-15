@@ -7,9 +7,6 @@ $keystone_db_password='123123'
 $glance_db_password='123123'
 $nova_db_password='123123'
 
-#network
-#$internal_address='192.168.56.105'
-#$public_address='192.168.56.105'
 
 $mysql_host='192.168.56.105'
 $glance_host='192.168.56.105'
