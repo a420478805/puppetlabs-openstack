@@ -54,12 +54,13 @@ node /mysql/{
     # set up all openstack databases, users, grants
   class { 'keystone::db::mysql':
     password => $keystone_db_password,
-    allowed_hosts => $keystone_host,
+    allowed_hosts => "%",
     host => $mysql_host,
   }
   #Class['glance::db::mysql'] -> Class['glance::registry']
   class { 'glance::db::mysql':
     host     => $mysql_host,
+    allowed_hosts => "%",
     password => $glance_db_password,
   }
   # TODO should I allow all hosts to connect?
