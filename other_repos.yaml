@@ -12,15 +12,15 @@ repos:
     git://github.com/a420478805/puppetlabs-mysql: mysql
     git://github.com/a420478805/puppetlabs-git: git
     git://github.com/a420478805/puppetlabs-vcsrepo: vcsrepo
-    git://github.com/saz/puppet-memcached: memcached
+    git://github.com/a420478805/puppet-memcached: memcached
     git://github.com/a420478805/puppetlabs-rsync: rsync
     # other deps
     git://github.com/a420478805/puppetlabs-xinetd: xinetd
-    git://github.com/saz/puppet-ssh: ssh
+    git://github.com/a420478805/puppet-ssh: ssh
     git://github.com/a420478805/puppetlabs-stdlib: stdlib
     git://github.com/a420478805/puppetlabs-apt: apt
-    git://github.com/ripienaar/puppet-concat: concat
-    git://github.com/duritong/puppet-sysctl.git: sysctl
+    git://github.com/a420478805/puppet-concat: concat
+    git://github.com/a420478805/puppet-sysctl.git: sysctl
   checkout_branches:
 #  keystone: dev
 #  glance: dev
