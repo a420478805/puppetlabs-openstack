@@ -162,7 +162,7 @@ node /controller/{
   class { 'nova':
     sql_connection     => $nova_db,
     # this is false b/c we are exporting
-    rabbit_host        => $rabbit_connection,
+    rabbit_host        => $controller_host,
     rabbit_userid      => $rabbit_user,
     rabbit_password    => $rabbit_password,
     image_service      => 'nova.image.glance.GlanceImageService',
