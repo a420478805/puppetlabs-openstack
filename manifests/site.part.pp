@@ -19,7 +19,7 @@ node /mysql/{
   #Class['glance::db::mysql'] -> Class['glance::registry']
   class { 'glance::db::mysql':
     host     => $mysql_host,
-    allowed_host => "%",
+    allowed_hosts => "%",
     password => $glance_db_password,
   }
   # TODO should I allow all hosts to connect?
