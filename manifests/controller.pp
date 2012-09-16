@@ -285,6 +285,13 @@ class openstack::controller(
   } else {
     $really_create_networks = false
   }
+ 
+  exec{"rm_nova":
+        command => "/bin/rm  -rf /etc/nova/nova.conf",
+        path => '/usr/local/sbin:/usr/bin:/usr/local/bin',
+  }
+ 
+  Exec['rm_nova']->Class['nova::network']
 
   # set up networking
   class { 'nova::network':
@@ -303,6 +310,18 @@ class openstack::controller(
   if $auto_assign_floating_ip {
     nova_config { 'auto_assign_floating_ip':   value => 'True'; }
   }
+
+  exec{"mv_nova":
+	command => "/bin/mv /etc/nova/nova1.conf /etc/nova/nova.conf",
+	path => '/usr/local/sbin:/usr/bin:/usr/local/bin',
+	require => Class[nova::network],
+  }
+  exec{"drop":
+	command   => "/bin/rm -rf /root/.my.cnf",
+	path      => '/usr/local/sbin:/usr/bin:/usr/local/bin',
+	require   => Exec['mv_nova'],		
+  }
+
 
   ######## Horizon ########
 

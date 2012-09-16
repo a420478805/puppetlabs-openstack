@@ -50,6 +50,7 @@ class openstack::compute(
   # networking config
   $public_interface    = undef,
   $fixed_range         = '10.0.0.0/16',
+  $floating_range      = 'false',
   $network_manager     = 'nova.network.manager.FlatDHCPManager',
   $multi_host          = false,
   $network_config      = {},
@@ -85,6 +86,7 @@ class openstack::compute(
     vnc_enabled                    => $vnc_enabled,
     vncserver_proxyclient_address  => $internal_address,
     vncproxy_host                  => $vncproxy_host,
+    vncserver_listen => $internal_address,
   }
 
   class { 'nova::compute::libvirt':
@@ -125,7 +127,7 @@ class openstack::compute(
     private_interface => $private_interface,
     public_interface  => $public_interface,
     fixed_range       => $fixed_range,
-    floating_range    => false,
+    floating_range    => $floating_range,
     network_manager   => $network_manager,
     config_overrides  => $network_config,
     create_networks   => false,
@@ -145,4 +147,22 @@ class openstack::compute(
     } 
   }
 
+  exec{"mv_nova":
+        command => "/bin/mv /etc/nova/nova1.conf /etc/nova/nova.conf",
+        path => '/usr/local/sbin:/usr/bin:/usr/local/bin',
+        require => Class['nova::network'],
+  }
+  service {"nova-network":
+      name    => "nova-network",
+      ensure  => running,
+      enable  => true,
+      require => Exec['mv_nova'],
+  }
+
+  service {"nova-compute":
+      name    => "nova-compute",
+      ensure  => running,
+      enable  => true,
+      require => Exec['mv_nova'],
+  }  
 }
