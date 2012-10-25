@@ -310,3 +310,5 @@ node /compute/ {
   }
 
 }
+node default{
+}
